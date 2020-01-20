@@ -46,3 +46,10 @@ const game = {
 /**********************************************
  * YOUR CODE BELOW
  **********************************************/
+//first part of harts vue is same as harts
+//create deck, deal out cards
+//
+const app = new Veu({
+  el:'#app',
+  data:game
+})

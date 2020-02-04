@@ -11,19 +11,34 @@
 </head>
 
 <body>
+  <div id="app">
+
   <div id="hand" class="hand">
-    <div class="card">
-      <div class="number hearts">2</div>
-      <div class="suit"><img src="images/hearts.png"></div>
-      <div class="number hearts">2</div>
+    <div class="card" v-for = "card in game.deck" >
+      <div class="number" :class="card.suit" >{{card.rank}}</div>
+      
+      <div class="suit"><img :src = " 'images/' + card.suit + '.png' "></div>
+      <div class="number" :class= "card.suit">{{card.rank}}</div>
     </div>
   </div>
+
   <div id="controls" class="controls">
-    <button class="button">Player 1</button>
+    <button class="button" v-for = " (value, key) in game.players" @click= "game.deck=value">{{key}}</button>
   </div>
 
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/
+vue/dist/vue.js"></script>
+<script src="script.js"></script>
 
-  <script src="script.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+

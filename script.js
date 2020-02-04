@@ -34,6 +34,7 @@ const suits = ['clubs', 'diamonds', 'hearts', 'spades']
 const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
 
 const game = {
+  player:'',
   deck: [],
   players: {
     'Player 1': [],
@@ -49,7 +50,30 @@ const game = {
 //first part of harts vue is same as harts
 //create deck, deal out cards
 //
-const app = new Veu({
-  el:'#app',
-  data:game
-})
+
+
+const cards =[]
+
+for ( const suit of suits ){
+  for (const rank of ranks){ 
+    cards.push({ 
+      suit,
+      rank
+    })
+  }
+}
+game.deck=shuffle(cards)
+
+for(let i = 0; i < game.deck.length;i++){
+  game.players['Player 1'].push(game.deck[i])
+  game.players['Player 2'].push(game.deck[++i])
+  game.players['Player 3'].push(game.deck[++i])
+  game.players['Player 4'].push(game.deck[++i])
+}
+const app = new Vue ({
+  el: '#app',
+  data: {
+    game
+  }
+
+});
